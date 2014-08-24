@@ -3,11 +3,12 @@
 # ~~~~
 
 # Home page
-GET     /index                      controllers.InicioController.index()
+GET     /                           controllers.InicioController.index()
 GET     /sobre                      controllers.InicioController.sobre()
 GET     /tarefa/novo                controllers.TaskController.novo()
 POST	/tarefa						controllers.TaskController.gravar()
 GET     /tarefa                     controllers.TaskController.lista()
+GET     /tarefa.json                controllers.TaskController.taskJson()
 GET		/tarefa/:id					controllers.TaskController.detalhar(id: Long)
 POST	/tarefa/:id					controllers.TaskController.alterar(id: Long)
 POST	/tarefa/:id/remover 		controllers.TaskController.remover(id: Long)

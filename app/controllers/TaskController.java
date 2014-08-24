@@ -1,8 +1,9 @@
 package controllers;
 
+import static play.libs.Json.toJson;
+
 import java.util.List;
 
-import akka.dispatch.sysmsg.Supervise;
 import models.Task;
 import play.data.Form;
 import play.mvc.Controller;
@@ -33,13 +34,18 @@ public class TaskController extends Controller {
     	return ok(views.html.task.render(tasks));
     }
     
+    public static Result taskJson(){
+    	List<Task> tasks = Task.find.all();
+    	return ok(toJson(tasks));
+    }
+    
     public static Result detalhar(Long id){
-    	Form<Task> detalhaForm = Form.form(Task.class).fill(Task.find.byId(id));
+    	Form<Task> detalhaForm = taskForm.fill(Task.find.byId(id));
     	return ok(views.html.alterar.render(id,detalhaForm));
     }
     
     public static Result alterar(Long id){
-    	Form<Task> alteraForm = Form.form(Task.class).fill(Task.find.byId(id)).bindFromRequest();
+    	Form<Task> alteraForm = taskForm.fill(Task.find.byId(id)).bindFromRequest();
     	if (alteraForm.hasErrors()) {
     		return badRequest(views.html.alterar.render(id, alteraForm));
     	}
@@ -51,7 +57,7 @@ public class TaskController extends Controller {
     public static Result remover(Long id){ 
     	Task.find.ref(id).delete();
     	flash("sucesso", "Tarefa removida com sucesso!");    	
-    	return lista();
+    	return redirect(routes.TaskController.lista());
     }	
 
 }
