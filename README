@@ -2,3 +2,5 @@ This is your new Play application
 =================================
 
 This file will be packaged with your application, when using `activator dist`.
+
+Documentação no site: https://www.playframework.com/documentation/2.3.x/Home
