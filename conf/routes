@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.InicioController.index()
+GET     /index                      controllers.InicioController.index()
 GET     /sobre                      controllers.InicioController.sobre()
 GET     /tarefa/novo                controllers.TaskController.novo()
 POST	/tarefa						controllers.TaskController.gravar()
