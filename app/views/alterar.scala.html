@@ -1,0 +1,31 @@
+@(id: Long, detalhaForm: Form[Task])
+@import helper._
+@main("Altera Tarefa"){
+
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+				<li class="active"><a href="/">Home</a></li>
+			</ul>
+		</div>
+		<h1>Alterar Tarefa</h1>
+		@form(routes.TaskController.alterar(id)) {
+			<fieldset>
+				@inputText(detalhaForm("name"), '_label -> "Nome da tarefa")
+			</fieldset>
+			<div class="control-group">
+				<div class="actions">
+					<input type="submit" value="Gravar" class="btn btn-primary">
+						<a href="@routes.TaskController.lista()" class="btn btn-primary">
+							Cancelar
+						</a>
+		}
+		@form(routes.TaskController.remover(id)) {
+					<input type="submit" value="Remover" class="btn danger">
+		}
+				</div>
+			</div>
+	
+	</div>
+
+}
