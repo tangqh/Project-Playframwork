@@ -12,7 +12,7 @@ import play.mvc.Result;
 public class TaskController extends Controller {
     
 	private static final Form<Task> taskForm = Form.form(Task.class);
-	
+
     public static Result novo() {    	
     	return ok(views.html.novo.render(taskForm));  	
     }
